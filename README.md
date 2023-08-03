@@ -26,7 +26,9 @@ Build a data table application using React and Typescipt.
 - pagination
 - a library or custom table can be used
 
-### Architecture
+### System Design
+<img width="943" alt="image" src="https://github.com/nidhigaday/Thrive_take_home_assignment/assets/10281667/771cdb9b-5a6e-46fe-bfc5-4ef4c870bf51">
+
 
 
 
