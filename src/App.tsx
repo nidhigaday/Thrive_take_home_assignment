@@ -1,6 +1,6 @@
 import "./App.css";
 
-import { Suspense, useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 
 import { Login } from "pages";
 import { Dashboard } from "components";

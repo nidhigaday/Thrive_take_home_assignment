@@ -23,7 +23,7 @@ const data = {
 
 const dbFilePath = path.join(__dirname, "db.json");
 
-fs.writeFile(dbFilePath, JSON.stringify(data, null, 2), (err) => {
+fs.writeFile("db.json", JSON.stringify(data, null, 2), (err) => {
   if (err) {
     console.error("Error writing data to db.json:", err);
   } else {

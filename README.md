@@ -1,17 +1,24 @@
-# Getting Started with Create React App
+## Thrive take home assignment
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app). Please make sure your system has stable version of Node installed.
+Welcome to Thrive take home assignment.
 
-## Available Scripts
+## Completed by
 
-To start the project:
+Name: **Nidhi Gaday**\
+Email: **nidhi.gaday@gmail.com**
 
-1. `npm server`: Generates the mock data and initiates the server at http://localhost:5000
-2. `npm start`: Runs the app in development mode. [http://localhost:3000](http://localhost:3000)
+> Please make sure your system has stable version of Node installed. This project was developed with following:
+>
+> - Node: **_v18.7.0_**
+> - npm: **_v9.8.1_**
 
-## Project Details
+## To start the project:
 
-This is a take home assignment for Thrive interview process.
+> **_This project requires mock data and a server to support the app. Please follow the instructions below:_**
+
+1. `npm run generate`: Generates the mock data
+2. `npm run server`: initiates the server at http://localhost:5000
+3. `npm run start`: Runs the app in development mode. [http://localhost:3000](http://localhost:3000)
 
 # System Design
 
@@ -106,8 +113,7 @@ Table order data modal:
 There are 3 types of paginations:
 
 1. Infinite Scroll
-2. Cursor based
-3. Offset based
+2. Offset based
 
 > Chosen Method: Offset based
 

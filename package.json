@@ -18,8 +18,8 @@
     "typescript": "^4.9.5"
   },
   "scripts": {
-    "generate": "node mock-server/generateData.js",
-    "server": "node mock-server/generateData.js && cd mock-server && npm install && json-server --watch db.json --port 5000 --middlewares cors.js pagination.js",
+    "generate": "npm install && node mock-server/generateData.js",
+    "server": "npm install && json-server --watch db.json --port 5000 --middlewares mock-server/cors.js mock-server/pagination.js",
     "start": "npm install && react-scripts start"
   },
   "eslintConfig": {
@@ -40,6 +40,7 @@
     ]
   },
   "devDependencies": {
-    "json-server": "^0.17.3"
+    "json-server": "^0.17.3",
+    "casual": "^1.6.2"
   }
 }
