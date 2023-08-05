@@ -1,25 +1,14 @@
 import { Box, Typography } from "@mui/material";
 
 import { DataTable } from "./Table";
-import { CURRENT_USER, TABLE_COLUMNS } from "allConstants";
+import { CURRENT_USER } from "allConstants";
 import { useContext } from "react";
 import { ColumnSortAndOrderContext } from "contexts/ColumnSortAndOrderContext";
-import { updateLocalStorageData } from "utils";
 
 export const Dashboard = ({ onLogoutClick }: { onLogoutClick: () => void }) => {
-  const { columns, onColumnOrderChange } = useContext(
+  const { resetColumnOrder, onSaveToStorage } = useContext(
     ColumnSortAndOrderContext
   );
-  const onSave = () => {
-    localStorage.setItem("order", JSON.stringify(columns));
-  };
-  const onReload = () => {
-    updateLocalStorageData("order", JSON.stringify(TABLE_COLUMNS));
-    onColumnOrderChange(TABLE_COLUMNS);
-  };
-  const onLogout = () => {
-    onLogoutClick();
-  };
 
   return (
     <Box>
@@ -28,20 +17,20 @@ export const Dashboard = ({ onLogoutClick }: { onLogoutClick: () => void }) => {
           {/* hardcoding it since no login logic is in place */}
           username: <i>@{CURRENT_USER.username}</i>
         </span>
-        <Box className="button" onClick={onLogout}>
+        <button className="button light" onClick={onLogoutClick}>
           Logout
-        </Box>
+        </button>
       </Box>
       <Box className="container">
         <Box className="flex spaceBetween fullWidth" pt={3} pb={2}>
           <Typography variant="h4">Registered Users</Typography>
-          <Box className="spacing-medium flex justifyRight">
-            <Box className="button" onClick={onSave}>
+          <Box className="flex justifyRight spacing-medium">
+            <button className="button" onClick={onSaveToStorage}>
               Save
-            </Box>
-            <Box className="button" onClick={onReload}>
+            </button>
+            <button className="button" onClick={resetColumnOrder}>
               Reload
-            </Box>
+            </button>
           </Box>
         </Box>
         <Box width="100%">

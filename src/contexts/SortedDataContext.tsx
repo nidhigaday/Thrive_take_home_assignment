@@ -17,6 +17,7 @@ type SortedDataContextValueType = {
   pagination?: Omit<UsersResponse, "data">;
   onSortedColumnChange: (key: string, sortType: SortType) => void;
   onPageChange: (page?: number) => void;
+  error: string | null;
 };
 
 export const SortedDataContext = createContext<SortedDataContextValueType>(
@@ -37,6 +38,7 @@ export const SortedDataContextProvider = ({
   const [paginationState, setPaginationState] =
     useState<Omit<UsersResponse, "data">>();
   const [tableData, setTableData] = useState<TableUser[]>([]);
+  const [error, setError] = useState<string | null>(null);
 
   const getSortedTableData = useCallback(
     (data: TableUser[], sortType?: SortType, key?: string) => {
@@ -64,21 +66,26 @@ export const SortedDataContextProvider = ({
 
   const fetchData = useCallback(
     async (page?: number) => {
-      const cachedData = getCachedData(String(page));
-      if (cachedData) {
-        setTableData(getSortedTableData(cachedData));
-        page &&
-          setPaginationState({ ...paginationState, page } as Omit<
-            UsersResponse,
-            "data"
-          >);
-      } else {
-        const { data, ...rest } = await fetchUsers(page);
-        const tableData = getSortedTableData(Utils.generateTableData(data));
-        localStorage.setItem(String(rest.page), JSON.stringify(tableData));
+      setError(null);
+      try {
+        const cachedData = getCachedData(String(page));
+        if (cachedData) {
+          setTableData(getSortedTableData(cachedData));
+          page &&
+            setPaginationState({ ...paginationState, page } as Omit<
+              UsersResponse,
+              "data"
+            >);
+        } else {
+          const { data, ...rest } = await fetchUsers(page);
+          const tableData = getSortedTableData(Utils.generateTableData(data));
+          localStorage.setItem(String(rest.page), JSON.stringify(tableData));
 
-        setPaginationState(rest);
-        setTableData(tableData);
+          setPaginationState(rest);
+          setTableData(tableData);
+        }
+      } catch (e) {
+        setError(`Error fetching data: ${e}`); // Set error if fetch fails
       }
     },
     [getSortedTableData, paginationState]
@@ -98,6 +105,7 @@ export const SortedDataContextProvider = ({
         pagination: paginationState,
         onSortedColumnChange,
         onPageChange: fetchData,
+        error,
       }}
     >
       {children}

@@ -7,5 +7,5 @@ export const getDateDiff = (pastDate: string): number => {
     today.getTime() - pastDateInMilliseconds.getTime();
   const diffInDays = diffInMilliseconds / oneDay;
 
-  return Math.ceil(Math.round(diffInDays));
+  return Math.round(diffInDays);
 };

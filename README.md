@@ -92,11 +92,13 @@ Table order data modal:
 ## Optimization & User experience
 
 - Code spilitting: increases performance by making components more granular and reduce re-render range
-- loading indicators: better ux
-- error handling: better ux and easier to debug
+- loading indicators and skeletons: until data is available to render, a skeleton is implemented to display, improves performance, since this is a light weight app, the impact is not significant
+- error handling: better ux and easier to debug, handles network requests
 - memoization
 - caching: in this particular assignment, since its a light weight app, localstorage is used to cache sorted table data. If a same page is requested, it populates data from cache, improving app performance
-- **_PAGINATION_**
+- all cached data in localstorage is cleared when user logs out ensuring secure session
+
+**_PAGINATION_**
 
 There are 3 types of paginations:
 
@@ -111,3 +113,7 @@ Reason:
 - Infinite scroll is best suited for continuous fetching. Also, since we are performing sorting on client side, it will require to sort through `n` number of items which increases the lag because of increased time complexity [O(nlgn)]
 - Cursor based pagination is the best approach when we have data that is being updated frequently. It sustains the location in db and makes user experience more seamless. In this assignment, we are using a mock data and not SQL request, I chose to not use this. Nevertheless, this would be my preferred method.
 - Offset based is the best approach here, since we have a cap on the number of data entries we will require and sorting needs to be done on visible page entries only.
+
+## Testing
+
+I did not add any unit/integration/e2e tests for the application.

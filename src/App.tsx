@@ -3,7 +3,7 @@ import "./App.css";
 import { Suspense, useState, useEffect } from "react";
 
 import { Login } from "pages";
-import { FallbackLoading, Dashboard } from "components";
+import { Dashboard } from "components";
 import { ColumnSortAndOrderContextProvider } from "contexts/ColumnSortAndOrderContext";
 import { SortedDataContextProvider } from "contexts/SortedDataContext";
 import { CURRENT_USER } from "allConstants";
@@ -26,19 +26,17 @@ function App() {
   }, [isLoggedIn]);
 
   return (
-    <Suspense fallback={<FallbackLoading />}>
-      <div id="App">
-        {isLoggedIn ? (
-          <ColumnSortAndOrderContextProvider>
-            <SortedDataContextProvider>
-              <Dashboard onLogoutClick={() => setLoggedIn(false)} />
-            </SortedDataContextProvider>
-          </ColumnSortAndOrderContextProvider>
-        ) : (
-          <Login onClick={() => setLoggedIn(true)} />
-        )}
-      </div>
-    </Suspense>
+    <div id="App" className="fullViewHeight fullwidth">
+      {isLoggedIn ? (
+        <ColumnSortAndOrderContextProvider>
+          <SortedDataContextProvider>
+            <Dashboard onLogoutClick={() => setLoggedIn(false)} />
+          </SortedDataContextProvider>
+        </ColumnSortAndOrderContextProvider>
+      ) : (
+        <Login onClick={() => setLoggedIn(true)} />
+      )}
+    </div>
   );
 }
 

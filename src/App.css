@@ -56,7 +56,6 @@ i {
 .spaceBetween {
   justify-content: space-between;
 }
-
 .alignCenter {
   align-items: center;
 }
@@ -131,10 +130,19 @@ tr > * {
   border: 1px solid #898989;
   border-radius: 5px;
   cursor: pointer;
+  color: inherit;
+  background-color: transparent;
 }
 
+.button:hover,
 .button:active {
   background-color: #f5f5f5;
+  color: #3a3a3a;
+}
+
+.light {
+  border-color: white;
+  color: white;
 }
 
 .header {

@@ -11,8 +11,12 @@ import { DraggableColumn } from "./DraggableColumn";
 import { TableFooter } from "./TableFooter";
 
 export const DataTable = () => {
-  const { data } = useContext(SortedDataContext);
+  const { data, error } = useContext(SortedDataContext);
   const { columns } = useContext(ColumnSortAndOrderContext);
+
+  if (error) {
+    return <Box>Something went wrong! Please try again.</Box>;
+  }
 
   if (!data?.length) {
     return <Skeleton variant="rounded" width="100%" height={700} />;

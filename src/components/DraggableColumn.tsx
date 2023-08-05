@@ -1,4 +1,4 @@
-import React, { useContext, useRef } from "react";
+import React, { useCallback, useContext, useRef } from "react";
 import { Box } from "@mui/material";
 import { useDrag, useDrop } from "react-dnd";
 
@@ -9,6 +9,16 @@ import { TableColumnType } from "types";
 import { IconButton } from "./IconButton";
 
 const DRAGGABLE_COLUMN_TYPE = "column";
+
+const getSortIcon = (column: TableColumnType) => {
+  return column.isSorting
+    ? column.sortType === "asc"
+      ? "/images/arrow-down.png"
+      : "/images/arrow-up.png"
+    : column.sortType === "asc"
+    ? "/images/disabled-arrow-down.png"
+    : "/images/disabled-arrow-up.png";
+};
 
 type DraggableColumnProps = {
   column: TableColumnType;
@@ -26,12 +36,15 @@ export const DraggableColumn: React.FC<DraggableColumnProps> = ({
     ColumnSortAndOrderContext
   );
 
-  const onColumnMove = (fromIndex: number, toIndex: number) => {
-    const updatedColumns = [...columns];
-    const [movedColumn] = updatedColumns.splice(fromIndex, 1);
-    updatedColumns.splice(toIndex, 0, movedColumn);
-    onColumnOrderChange(updatedColumns);
-  };
+  const onColumnMove = useCallback(
+    (fromIndex: number, toIndex: number) => {
+      const updatedColumns = [...columns];
+      const [movedColumn] = updatedColumns.splice(fromIndex, 1);
+      updatedColumns.splice(toIndex, 0, movedColumn);
+      onColumnOrderChange(updatedColumns);
+    },
+    [columns, onColumnOrderChange]
+  );
 
   const [, drop] = useDrop({
     accept: DRAGGABLE_COLUMN_TYPE,
@@ -58,14 +71,6 @@ export const DraggableColumn: React.FC<DraggableColumnProps> = ({
 
   drag(drop(ref));
 
-  const sortIcon = column.isSorting
-    ? column.sortType === "asc"
-      ? "/images/arrow-down.png"
-      : "/images/arrow-up.png"
-    : column.sortType === "asc"
-    ? "/images/disabled-arrow-down.png"
-    : "/images/disabled-arrow-up.png";
-
   return (
     <th
       ref={ref}
@@ -74,12 +79,15 @@ export const DraggableColumn: React.FC<DraggableColumnProps> = ({
         border: 0,
         cursor: isDragging ? "grabbing" : "grab",
       }}
+      draggable="true"
+      role="columnheader"
+      aria-label="draggable column"
     >
       <Box className="flex alignCenter spacing-small">
         {column.label}
         <IconButton
           disabled={!column.isSorting}
-          imgSrc={sortIcon}
+          imgSrc={getSortIcon(column)}
           imgAlt={column.sortType}
           onClick={() =>
             onSortedColumnChange(
@@ -87,6 +95,8 @@ export const DraggableColumn: React.FC<DraggableColumnProps> = ({
               column.isSorting && column.sortType === "asc" ? "desc" : "asc"
             )
           }
+          aria-disabled={!column.isSorting ? "true" : "false"}
+          ariaLabel={`Sort by ${column.label}`}
         />
       </Box>
     </th>

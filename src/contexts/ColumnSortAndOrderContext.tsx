@@ -1,12 +1,15 @@
 import { TABLE_COLUMNS } from "allConstants";
 import { ReactElement, useState, createContext } from "react";
 import { SortType, TableColumnType } from "types";
+import { updateLocalStorageData } from "utils";
 
 type ColumnSortAndOrderContextValueType = {
   columns: TableColumnType[];
   onColumnOrderChange: (newOrder: TableColumnType[]) => void;
   onSortChange: (key: string, sortType?: SortType) => void;
   sortedColumn: TableColumnType;
+  onSaveToStorage: () => void;
+  resetColumnOrder: () => void;
 };
 
 export const ColumnSortAndOrderContext =
@@ -39,6 +42,12 @@ export const ColumnSortAndOrderContextProvider = ({
               sortType,
             }))
           ),
+        onSaveToStorage: () =>
+          localStorage.setItem("order", JSON.stringify(orderedColumns)),
+        resetColumnOrder: () => {
+          updateLocalStorageData("order", JSON.stringify(TABLE_COLUMNS));
+          setColumnOrder(TABLE_COLUMNS);
+        },
       }}
     >
       {children}

@@ -39,6 +39,7 @@ export const TableFooter = () => {
             }
             imgAlt="left-arrow"
             onClick={() => onPageChange(pagination?.page - 1)}
+            ariaLabel="Go to the previous page"
           />
           <Box>
             <span>
@@ -55,6 +56,7 @@ export const TableFooter = () => {
             }
             imgAlt="right-arrow"
             onClick={() => onPageChange(pagination?.page + 1)}
+            ariaLabel="Go to the next page"
           />
         </Box>
       </td>
