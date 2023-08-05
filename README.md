@@ -25,6 +25,8 @@ Build a data table application using React and Typescipt.
 - each column should be sortable (client side only)
 - pagination
 - a library or custom table can be used
+- login with a mock user
+- save column order to localstorage and reset it
 
 ## Architecture
 
@@ -44,6 +46,7 @@ Build a data table application using React and Typescipt.
    - pagination
    - column dragability
    - column sortability
+   - buttons to save/reset column order
 
 ## Data Modals
 
@@ -79,7 +82,7 @@ Table sorting data modal:
 Table order data modal:
 
 - column id
-- order (1 high -> n lowest)
+- order
 
 ## Interface (API) Definition
 
