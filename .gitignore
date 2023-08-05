@@ -9,7 +9,8 @@
 .pnp.cjs
 .pnp.loader.mjs
 yarn.lock
-
+.editorconfig
+.yarnrc.yml
 
 # testing
 /coverage
