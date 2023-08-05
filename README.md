@@ -17,7 +17,7 @@ Email: **nidhi.gaday@gmail.com**
 > **_This project requires mock data and a server to support the app. Please follow the instructions below:_**
 
 1. `npm run generate`: Generates the mock data
-2. `npm run server`: initiates the server at http://localhost:5000
+2. `npm run server`: Initiates the server at http://localhost:5000
 3. `npm run start`: Runs the app in development mode. [http://localhost:3000](http://localhost:3000)
 
 # System Design

@@ -19,7 +19,7 @@
   },
   "scripts": {
     "generate": "npm install && node mock-server/generateData.js",
-    "server": "npm install && json-server --watch db.json --port 5000 --middlewares mock-server/cors.js mock-server/pagination.js",
+    "server": "npm install && json-server --watch db.json --port 5000 --middlewares mock-server/middlewares/cord.js mock-server/middlewares/pagination.js",
     "start": "npm install && react-scripts start"
   },
   "eslintConfig": {
