@@ -19,7 +19,7 @@ This is a take home assignment for Thrive interview process.
 
 Build a data table application using React and Typescipt.
 
-- build a table for 500 data rows using fake data from [faker](https://fakerjs.dev/) library
+- build a table for 500 data rows using fake data from [casual](https://www.npmjs.com/package/casual) library
 - table must have these columns - is, firstName, lastName, email, city, refisteredDate, fullName, dsr (days since registered)
 - able to click and drag the columns
 - each column should be sortable (client side only)
