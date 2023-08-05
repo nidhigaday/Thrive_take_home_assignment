@@ -1,5 +1,6 @@
 {
-  "name": "thrive-assignment",
+  "name": "thrive takehome assignment",
+  "packageManager": "yarn@3.6.1",
   "version": "0.1.0",
   "private": true,
   "author": "Nidhi Gaday",
@@ -18,9 +19,9 @@
     "typescript": "^4.9.5"
   },
   "scripts": {
-    "generate": "npm install && node mock-server/generateData.js",
-    "server": "npm install && json-server --watch db.json --port 5000 --middlewares mock-server/middlewares/cord.js mock-server/middlewares/pagination.js",
-    "start": "npm install && react-scripts start"
+    "generate": "node mock-server/generateData.js",
+    "server": "json-server --watch db.json --port 5000 --middlewares mock-server/middlewares/cors.js mock-server/middlewares/pagination.js",
+    "start": "react-scripts start"
   },
   "eslintConfig": {
     "extends": [
@@ -40,7 +41,7 @@
     ]
   },
   "devDependencies": {
-    "json-server": "^0.17.3",
-    "casual": "^1.6.2"
+    "casual": "^1.6.2",
+    "json-server": "^0.17.3"
   }
 }

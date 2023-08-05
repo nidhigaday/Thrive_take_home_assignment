@@ -9,16 +9,17 @@ Email: **nidhi.gaday@gmail.com**
 
 > Please make sure your system has stable version of Node installed. This project was developed with following:
 >
-> - Node: **_v18.7.0_**
-> - npm: **_v9.8.1_**
+> - Node: **_v18.7.0_** [Download](https://nodejs.org/en/download)
+> - yarn: **_v3.6.1_** [installation instructions](https://yarnpkg.com/getting-started/install)
 
 ## To start the project:
 
 > **_This project requires mock data and a server to support the app. Please follow the instructions below:_**
 
-1. `npm run generate`: Generates the mock data
-2. `npm run server`: Initiates the server at http://localhost:5000
-3. `npm run start`: Runs the app in development mode. [http://localhost:3000](http://localhost:3000)
+1. `yarn install`: This will install all required dependencies
+2. `yarn generate`: Generates the mock data
+3. `yarn server`: Initiates the server at http://localhost:5000
+4. `yarn start`: Runs the app in development mode. [http://localhost:3000](http://localhost:3000)
 
 # System Design
 
