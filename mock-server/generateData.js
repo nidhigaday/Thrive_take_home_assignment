@@ -1,5 +1,4 @@
 const fs = require("fs");
-const path = require("path");
 const casual = require("casual");
 
 const generateUsers = (count) => {
@@ -20,8 +19,6 @@ const generateUsers = (count) => {
 const data = {
   users: generateUsers(500),
 };
-
-const dbFilePath = path.join(__dirname, "db.json");
 
 fs.writeFile("db.json", JSON.stringify(data, null, 2), (err) => {
   if (err) {
