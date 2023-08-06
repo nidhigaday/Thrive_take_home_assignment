@@ -1,24 +1,40 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+
+import { useState, useEffect } from "react";
+
+import { Login, Dashboard } from "pages";
+import { ColumnSortAndOrderContextProvider } from "contexts/ColumnSortAndOrderContext";
+import { SortedDataContextProvider } from "contexts/SortedDataContext";
+import { CURRENT_USER } from "allConstants";
 
 function App() {
+  const [isLoggedIn, setLoggedIn] = useState<boolean>(
+    Boolean(localStorage.getItem("currentUser"))
+  );
+
+  useEffect(() => {
+    const currentUser = localStorage.getItem("currentUser");
+
+    if (isLoggedIn && !currentUser) {
+      localStorage.setItem("currentUser", JSON.stringify(CURRENT_USER));
+    }
+
+    if (!isLoggedIn) {
+      localStorage.clear();
+    }
+  }, [isLoggedIn]);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div id="App" className="fullViewHeight fullwidth">
+      {isLoggedIn ? (
+        <ColumnSortAndOrderContextProvider>
+          <SortedDataContextProvider>
+            <Dashboard onLogoutClick={() => setLoggedIn(false)} />
+          </SortedDataContextProvider>
+        </ColumnSortAndOrderContextProvider>
+      ) : (
+        <Login onClick={() => setLoggedIn(true)} />
+      )}
     </div>
   );
 }
