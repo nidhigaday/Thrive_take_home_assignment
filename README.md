@@ -7,10 +7,23 @@ Welcome to Thrive take home assignment.
 Name: **Nidhi Gaday**\
 Email: **nidhi.gaday@gmail.com**
 
-> Please make sure your system has stable version of Node installed. This project was developed with following:
+> 🚧 Please make sure your system has stable version of Node and npm installed.
+> This project is built with following dependencies:
 >
-> - Node: **_v18.7.0_** [Download](https://nodejs.org/en/download)
-> - yarn: **_v3.6.1_** [installation instructions](https://yarnpkg.com/getting-started/install)
+> - Node: **_v18.7.0_**
+> - npm: **_v9.8.1_**
+>
+> ❗️ Please turn off npm audit for smooth installation. ❗️ To do so please run
+>
+> ```
+> npm audit set false
+> ```
+>
+> once project is running, please make sure to reset it to true
+>
+> ```
+> npm audit set true
+> ```
 
 ## To start the project:
 
