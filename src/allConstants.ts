@@ -1,4 +1,4 @@
-import { TableColumnType } from "./types";
+import { TableColumnType } from "./allTypes";
 
 export const TABLE_COLUMNS: TableColumnType[] = [
   {
