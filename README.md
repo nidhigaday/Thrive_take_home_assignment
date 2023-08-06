@@ -12,25 +12,23 @@ Email: **nidhi.gaday@gmail.com**
 >
 > - Node: **_v18.7.0_**
 > - npm: **_v9.8.1_**
->
-> ❗️ Please turn off npm audit for smooth installation. ❗️ To do so please run
->
-> ```
-> npm audit set false
-> ```
->
-> once project is running, please make sure to reset it to true
->
-> ```
-> npm audit set true
-> ```
 
 ## To start the project:
 
 > **_This project requires mock data and a server to support the app. Please follow the instructions below:_**
 
-1. `yarn install`: This will install all required dependencies
-2. `yarn generate`: Generates the mock data
+1. Install all required dependencies
+
+```
+$ npm install
+```
+
+2. Generates the mock data
+
+```
+$ npm run generate
+```
+
 3. `yarn server`: Initiates the server at http://localhost:5000
 4. `yarn start`: Runs the app in development mode. [http://localhost:3000](http://localhost:3000)
 
