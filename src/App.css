@@ -44,3 +44,161 @@ html {
 .skeleton-footer {
   width: 30%;
 }
+
+i {
+  color: inherit;
+}
+
+.fullWidth {
+  width: 100%;
+}
+
+.fullHeight {
+  height: 100%;
+}
+
+.fullViewHeight {
+  height: 100vh;
+}
+
+.flex {
+  display: flex;
+}
+
+.flex-column {
+  flex-direction: column;
+}
+
+.justifyCenter {
+  justify-content: center;
+}
+
+.justifyLeft {
+  justify-content: flex-start;
+}
+
+.justifyRight {
+  justify-content: flex-end;
+}
+
+.spaceBetween {
+  justify-content: space-between;
+}
+.alignCenter {
+  align-items: center;
+}
+
+.spacing-small > * {
+  margin-left: 10px;
+}
+.spacing-medium > * {
+  margin-left: 20px;
+}
+.spacing-large > * {
+  margin-left: 30px;
+}
+
+.disabled {
+  cursor: default !important;
+}
+
+.disabled:hover {
+  background-color: transparent !important;
+}
+
+table {
+  border-collapse: collapse;
+  font-size: 14px;
+}
+
+thead > tr {
+  border-bottom: 1px solid #898989;
+}
+
+tr {
+  width: 100%;
+  padding: 10px;
+  text-align: left;
+}
+
+tbody > tr:hover {
+  background-color: #f5f5f5;
+}
+
+tr > * {
+  padding: 10px;
+}
+
+.pagination {
+  border-top: 1px solid #898989;
+}
+
+.pagination:hover {
+  background-color: transparent !important;
+}
+
+.iconButton {
+  height: 40px;
+  width: 40px;
+  cursor: pointer;
+  padding: 10px;
+  border-radius: 50%;
+}
+
+.iconButton > img {
+  height: 100%;
+}
+
+.iconButton:hover {
+  background-color: #f5f5f5;
+}
+
+.button {
+  padding: 10px;
+  border: 1px solid #898989;
+  border-radius: 5px;
+  cursor: pointer;
+  color: inherit;
+  background-color: transparent;
+}
+
+.button:hover,
+.button:active {
+  background-color: #f5f5f5;
+  color: #3a3a3a;
+}
+
+.light {
+  border-color: white;
+  color: white;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 40px;
+  background-color: #bff7fc;
+  background-color: #1f494d;
+  color: white;
+  position: fixed;
+  top: 0;
+  width: 100%;
+}
+
+.header > * {
+  color: inherit;
+}
+
+.header > .button:active {
+  color: #3a3a3a;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  height: 100vh;
+  padding: 100px 40px 20px 40px;
+}
