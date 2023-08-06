@@ -8,17 +8,18 @@ import { TableColumnType, TableUser } from "allTypes";
 
 import { DraggableColumn } from "./DraggableColumn";
 import { TableFooter } from "./TableFooter";
+import { Skeleton } from "./Skeleton";
 
 export const DataTable = () => {
-  const { data, error } = useContext(SortedDataContext);
+  const { data, error, isFetching } = useContext(SortedDataContext);
   const { columns } = useContext(ColumnSortAndOrderContext);
 
   if (error) {
     return <div>Something went wrong! Please try again.</div>;
   }
 
-  if (!data?.length) {
-    return <div className="skeleton" />;
+  if (isFetching || !data?.length) {
+    return <Skeleton />;
   }
 
   return (

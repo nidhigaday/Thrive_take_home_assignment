@@ -17,6 +17,7 @@ type SortedDataContextValueType = {
   onSortedColumnChange: (key: string, sortType: SortType) => void;
   onPageChange: (page?: number) => void;
   error: string | null;
+  isFetching: boolean;
 };
 
 export const SortedDataContext = createContext<SortedDataContextValueType>(
@@ -38,6 +39,7 @@ export const SortedDataContextProvider = ({
     useState<Omit<UsersResponse, "data">>();
   const [tableData, setTableData] = useState<TableUser[]>([]);
   const [error, setError] = useState<string | null>(null);
+  const [isFetching, setFetching] = useState<boolean>(false);
 
   const getSortedTableData = useCallback(
     (data: TableUser[], sortType?: SortType, key?: string) => {
@@ -66,6 +68,7 @@ export const SortedDataContextProvider = ({
   const fetchData = useCallback(
     async (page?: number) => {
       setError(null);
+      setFetching(true);
       try {
         const cachedData = Utils.getCachedData(String(page));
         if (cachedData) {
@@ -86,6 +89,7 @@ export const SortedDataContextProvider = ({
       } catch (e) {
         setError(`Error fetching data: ${e}`); // Set error if fetch fails
       }
+      setFetching(false);
     },
     [getSortedTableData, paginationState]
   );
@@ -105,6 +109,7 @@ export const SortedDataContextProvider = ({
         onSortedColumnChange,
         onPageChange: fetchData,
         error,
+        isFetching,
       }}
     >
       {children}

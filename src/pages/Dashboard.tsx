@@ -32,7 +32,7 @@ export const Dashboard = ({ onLogoutClick }: { onLogoutClick: () => void }) => {
             </button>
           </div>
         </div>
-        <div className="fullWidth">
+        <div className="fullWidth fullHeight">
           <DataTable />
         </div>
       </div>

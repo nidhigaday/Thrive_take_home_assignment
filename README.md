@@ -29,8 +29,17 @@ $ npm install
 $ npm run generate
 ```
 
-3. `yarn server`: Initiates the server at http://localhost:5000
-4. `yarn start`: Runs the app in development mode. [http://localhost:3000](http://localhost:3000)
+3. Start the server at http://localhost:5000
+
+```
+$ npm run server
+```
+
+4. Runs the app in development mode. [http://localhost:3000](http://localhost:3000)
+
+```
+$ npm start
+```
 
 # System Design
 
@@ -131,10 +140,9 @@ There are 3 types of paginations:
 
 Reason:
 
-- Infinite scroll is best suited for continuous fetching. Also, since we are performing sorting on client side, it will require to sort through `n` number of items which increases the lag because of increased time complexity [O(nlgn)]
-- Cursor based pagination is the best approach when we have data that is being updated frequently. It sustains the location in db and makes user experience more seamless. In this assignment, we are using a mock data and not SQL request, I chose to not use this. Nevertheless, this would be my preferred method.
+- Infinite scroll is best suited for continuous fetching. Also, we are performing sorting on client side, it will require to sort through `n` number of items which increases the lag because of increased time complexity `O(nlgn)`. Additionally, cursor based pagination is the best approach when we have data that is being updated frequently. It sustains the location in db and makes user experience more seamless. In this assignment, we are using a mock data and not SQL request, I chose to not use this. Nevertheless, this would be my preferred method.
 - Offset based is the best approach here, since we have a cap on the number of data entries we will require and sorting needs to be done on visible page entries only.
 
 ## Testing
 
-I did not add any unit/integration/e2e tests for the application.
+Implementation does not contain any testing as it was not part of the requirements. Although, test coverage is a must in production environment

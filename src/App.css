@@ -34,19 +34,11 @@ html {
   }
 }
 
-.skeleton-text {
+.skeleton-row {
   width: 100%;
-  height: 0.7rem;
-  margin-bottom: 0.5rem;
+  height: 3rem;
+  margin-top: 1rem;
   border-radius: 0.25rem;
-}
-
-.skeleton-text__body {
-  width: 75%;
-}
-
-.skeleton-footer {
-  width: 30%;
 }
 
 i {

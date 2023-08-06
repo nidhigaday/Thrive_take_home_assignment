@@ -3,9 +3,9 @@
  * Since the db.json file contains the users array, json-server automatically creates an endpoint /users for the users data.
  */
 
-import { UsersResponse } from "../allTypes";
+import { UsersResponse } from "allTypes";
 
-const baseUrl = "http://localhost:5000";
+const baseUrl = process.env.REACT_APP_SERVER_URL;
 
 export const fetchUsers = async (page = 1) => {
   const url = new URL(`${baseUrl}/users`);

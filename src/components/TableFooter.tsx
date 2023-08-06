@@ -14,7 +14,7 @@ export const TableFooter = () => {
 
   const dataIds = data.map((item: TableUser) => item.id);
   const firstItem = Math.min(...dataIds);
-  const lastitem = Math.max(...dataIds);
+  const lastItem = Math.max(...dataIds);
 
   return (
     <tr className="pagination">
@@ -22,7 +22,7 @@ export const TableFooter = () => {
         <div className="flex justifyRight fullWidth alignCenter spacing-medium">
           <div className="flex spacing-small">
             <span>
-              {firstItem} - {lastitem}
+              {firstItem} - {lastItem}
             </span>
             <span>of</span>
             <span>
