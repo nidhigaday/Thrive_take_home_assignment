@@ -21,9 +21,9 @@ export const Dashboard = ({ onLogoutClick }: { onLogoutClick: () => void }) => {
         </button>
       </div>
       <div className="container">
-        <div className="flex spaceBetween fullWidth" pt={3} pb={2}>
-          <h4>Registered Users</h4>
-          <div className="flex justifyRight spacing-medium">
+        <div className="flex spaceBetween fullWidth pageTitle">
+          <h2>Registered Users</h2>
+          <div className="flex justifyRight alignCenter spacing-medium">
             <button className="button" onClick={onSaveToStorage}>
               Save
             </button>

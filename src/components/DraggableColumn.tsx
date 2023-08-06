@@ -1,10 +1,11 @@
-import React, { useCallback, useRef } from "react";
+import React, { useCallback, useContext, useRef } from "react";
 import { useDrag, useDrop } from "react-dnd";
 
-import { TableColumnType } from "../allTypes";
+import { ColumnSortAndOrderContext } from "contexts/ColumnSortAndOrderContext";
+import { SortedDataContext } from "contexts/SortedDataContext";
+import { TableColumnType } from "allTypes";
 
 import { IconButton } from "./IconButton";
-import { TABLE_COLUMNS } from "../allConstants";
 
 const DRAGGABLE_COLUMN_TYPE = "column";
 
@@ -29,15 +30,19 @@ export const DraggableColumn: React.FC<DraggableColumnProps> = ({
 }) => {
   const ref = useRef<HTMLTableCellElement>(null);
 
-  const columns = TABLE_COLUMNS;
+  const { onSortedColumnChange } = useContext(SortedDataContext);
+  const { columns, onColumnOrderChange } = useContext(
+    ColumnSortAndOrderContext
+  );
 
   const onColumnMove = useCallback(
     (fromIndex: number, toIndex: number) => {
       const updatedColumns = [...columns];
       const [movedColumn] = updatedColumns.splice(fromIndex, 1);
       updatedColumns.splice(toIndex, 0, movedColumn);
+      onColumnOrderChange(updatedColumns);
     },
-    [columns]
+    [columns, onColumnOrderChange]
   );
 
   const [, drop] = useDrop({
@@ -83,7 +88,12 @@ export const DraggableColumn: React.FC<DraggableColumnProps> = ({
           disabled={!column.isSorting}
           imgSrc={getSortIcon(column)}
           imgAlt={column.sortType}
-          onClick={() => {}}
+          onClick={() =>
+            onSortedColumnChange(
+              column.key,
+              column.isSorting && column.sortType === "asc" ? "desc" : "asc"
+            )
+          }
           aria-disabled={!column.isSorting ? "true" : "false"}
           ariaLabel={`Sort by ${column.label}`}
         />

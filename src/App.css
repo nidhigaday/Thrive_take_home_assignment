@@ -17,6 +17,10 @@ html {
   font-family: Arial, Helvetica, sans-serif;
 }
 
+.welcome {
+  margin: 100px auto 30px auto;
+}
+
 .skeleton {
   animation: skeleton-loading 1s linear infinite alternate;
 }
@@ -104,6 +108,15 @@ i {
 
 .disabled:hover {
   background-color: transparent !important;
+}
+
+.pageTitle {
+  padding: 30px auto 20px auto;
+}
+
+.tableWrapper {
+  border: 1px solid #898989;
+  border-radius: 5px;
 }
 
 table {
